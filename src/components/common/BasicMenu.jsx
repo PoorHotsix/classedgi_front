@@ -7,15 +7,15 @@ const BasicMenu = () => {
       <div className="w-4/5 bg-gray-500" >
         <ul className="flex p-4 text-white font-bold">
           <li className="pr-6 text-2xl">
-            <Link to={'/'}>Main</Link>
+            <Link to={'/home'}>Home</Link>
           </li>
           <li className="pr-6 text-2xl">
-            <Link to={'/about'}>About</Link>
+            <Link to={'/notice'}>공지</Link>
           </li>
           <li className="pr-6 text-2xl">
-            <Link to={'/todo/'}>Todo</Link>
+            <Link to={'/task'}>과제</Link>
           </li>
-        </ul>
+          </ul>
       </div>
 
       <div className="w-1/5 flex justify-end bg-orange-300 p-4 font-medium">

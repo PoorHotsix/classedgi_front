@@ -1,10 +1,13 @@
 import { Suspense, lazy } from "react";
 import todoRouter from "./todoRouter";
+import postRouter from "./postRouter"; // postRouter 임포트
+// import PostList from "../components/post/PostList";
+
 
 const { createBrowserRouter } = require("react-router-dom");
 
 const Loading = <div>Loading....</div>
-const Main = lazy(() => import("../components/common/MainPage"))
+const Home = lazy(() => import("../components/common/HomePage"))
 
 const About = lazy(() => import("../components/common/AboutPage"))
 
@@ -14,27 +17,34 @@ const TodoList = lazy(() => import("../pages/todo/ListPage"))
 
 const Login = lazy(() => import("../components/member/LoginPage"))
 
+const PostList = lazy(() => import("../components/post/PostList"))
+
 const root = createBrowserRouter([
 
   {
     path: "",
-    element: <Suspense fallback={Loading}><Main /></Suspense>
+    element: <Suspense fallback={Loading}><Home /></Suspense>
   },
   {
     path: "login",
     element: <Suspense fallback={Loading}><Login /></Suspense>
   },
   {
-    path: "about",
+    path: "notice",
     element: <Suspense fallback={Loading}><About /></Suspense>
   },
   {
-    path: "todo",
+    path: "task",
     element: <Suspense fallback={Loading}><TodoIndex /></Suspense>,
     children: todoRouter()
+  },
+  {
+    path: "home", // post 경로 추가
+    element: <Suspense fallback={Loading}><Home /></Suspense>, // 필요한 컴포넌트로 변경 가능
+   
   }
 
 
-])
+]);
 
 export default root;

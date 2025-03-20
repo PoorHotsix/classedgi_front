@@ -3,8 +3,9 @@ import BasicLayout from "./BasicLayout";
 import { useEffect, useState } from "react";
 import { getCookie } from "../../utils/cookieUtils";
 import { useSelector } from "react-redux";
+import PostList from "../post/PostList";
 
-const MainPage = () => {
+const HomePage = () => {
   const navi = useNavigate();
 
   const id = useSelector(state => state.loginSlicer.id);
@@ -17,11 +18,10 @@ const MainPage = () => {
 
 
   return (
-    <BasicLayout>
-
-      <div className=" text-3xl">Main Page</div>
+    <BasicLayout>    
+        <PostList />  
     </BasicLayout>
   );
 }
 
-export default MainPage;
+export default HomePage;
