@@ -7,17 +7,18 @@ import postRouter from "./postRouter"; // postRouter 임포트
 const { createBrowserRouter } = require("react-router-dom");
 
 const Loading = <div>Loading....</div>
-const Home = lazy(() => import("../components/common/HomePage"))
 
-const About = lazy(() => import("../components/common/AboutPage"))
+const Home = lazy(() => import("../components/common/HomePage"))
+const PostList = lazy(() => import("../components/post/PostList"))
+
+const Notice = lazy(() => import("../components/post/NoticePage"))
 
 const TodoIndex = lazy(() => import("../pages/todo/IndexPage"))
-
 const TodoList = lazy(() => import("../pages/todo/ListPage"))
 
 const Login = lazy(() => import("../components/member/LoginPage"))
 
-const PostList = lazy(() => import("../components/post/PostList"))
+
 
 const root = createBrowserRouter([
 
@@ -31,7 +32,7 @@ const root = createBrowserRouter([
   },
   {
     path: "notice",
-    element: <Suspense fallback={Loading}><About /></Suspense>
+    element: <Suspense fallback={Loading}><Notice /></Suspense>
   },
   {
     path: "task",

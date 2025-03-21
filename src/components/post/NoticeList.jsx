@@ -4,12 +4,23 @@ import React, { useEffect, useState } from "react";
 import { getPostBoard } from '../../api/postApi/postApi';
 import { useSearchParams } from "react-router-dom";
 
+
 const initialState = {
     notice: [],
     task: []
-};
+    // dtoList: [],
+    // pageRequestDto: null,
+    // totalCount: 0,
+    // pageNumList: [],
+    // prev: false,
+    // next: false,
+    // prevPage: 0,
+    // nextPage: 0,
+    // totalPage: 0,
+    // currentPage: 0
+}
 
-const PostList = () => {
+const NoticeList = () => {
 
     const [searchParams] = useSearchParams();
     const [post, setPost] = useState({...initialState});
@@ -31,16 +42,13 @@ const PostList = () => {
    
     return (
         <>
-            <h3>공지</h3>
+            <h3>공지/과제</h3>
             <table className="notice">
                 <thead>
                     <tr>
                         <th>번호</th>
-                        <th>유형</th>
                         <th>제목</th>
-                        <th>닉네임</th>
                         <th>작성일</th>
-                        <th>댓글수</th>             
                     </tr>
                 </thead>
                 <tbody>
@@ -49,40 +57,30 @@ const PostList = () => {
                         return (
                             <tr key={post.id}>
                                 <td>{ index + 1 }</td>
-                                <td>{ post.boardName }</td>
                                 <td>{ post.title }</td>
-                                <td>{ post.nickname }</td>
                                 <td>{ post.regDate }</td>
-                                <td>댓글 수: { post.commentCount }</td>
                             </tr>
                         );
                     })
                 }
                 </tbody>
             </table>
-            <h3>과제</h3>
             <table className="task">
                 <thead>
                     <tr>
                         <th>번호</th>
-                        <th>유형</th>
                         <th>제목</th>
-                        <th>닉네임</th>
                         <th>작성일</th>
-                        <th>댓글수</th>             
                     </tr>
                 </thead>
                 <tbody>
                 {
-                    post.task.map((post, index) => {
+                    post.notice.map((post, index) => {
                         return (
                             <tr key={post.id}>
                                 <td>{ index + 1 }</td>
-                                <td>{ post.boardName }</td>
                                 <td>{ post.title }</td>
-                                <td>{ post.nickname }</td>
                                 <td>{ post.regDate }</td>
-                                <td>댓글 수: { post.commentCount }</td>
                             </tr>
                         );
                     })
@@ -93,4 +91,4 @@ const PostList = () => {
     );
 }
 
-export default PostList;
+export default NoticeList;
